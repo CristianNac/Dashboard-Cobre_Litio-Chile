@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "dashboard-mineria"
+version = "0.1.0"
+description = ""
+authors = ["Cristian Orellana"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.11.5"
+
+
+[tool.poetry.group.dev.dependencies]
+polars = "^1.32.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
