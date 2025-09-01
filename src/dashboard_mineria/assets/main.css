@@ -1,0 +1,71 @@
+.Todo {
+    display:grid;
+    grid-template-columns: 20% 80%;
+    grid-template-areas: 
+                        "sidebar header"
+                        "sidebar KPI"
+                        "sidebar Graficos1"
+                        "sidebar Tabla";
+    min-height: 100vh;
+    gap:12px;
+    background-color: #0B1E39;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: blue;
+}
+
+.header {
+    grid-area: header;
+    background-color: #0B1E39;
+    color: white;
+    display:grid;
+    grid-template-columns: 70% 15% 15%;
+}
+
+.KPI {
+    grid-area: KPI;
+    display:grid;
+    background-color: #eee;
+    grid-template-areas: "KPI1 KPI2 KPI3";
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:var(--space-3);
+}
+
+.KPI1 {
+    grid-area:KPI1;
+    background-color:orange;
+}
+
+.KPI2 {
+    grid-area:KPI2;
+    background-color:red;
+}
+
+.KPI3 {
+    grid-area:KPI3;
+    background-color:blue;
+}
+
+.Graficos1 {
+    grid-area: Graficos1;
+    background-color: orange;
+    display:grid;
+    grid-template-areas:
+              "Grafico-torta Grafico-barra";
+    grid-template-columns: 50% 50%;
+}
+
+.Grafico-torta {
+    grid-area: Grafico-torta;
+}
+
+.Grafico-barra {
+    grid-area: Grafico-barra;
+}
+
+.Tabla {
+    grid-area: Tabla;
+    background-color: black;
+}
