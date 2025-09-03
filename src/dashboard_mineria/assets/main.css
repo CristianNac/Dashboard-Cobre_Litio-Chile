@@ -4,68 +4,301 @@
     grid-template-areas: 
                         "sidebar header"
                         "sidebar KPI"
-                        "sidebar Graficos1"
-                        "sidebar Tabla";
+                        "sidebar Graficos1";
     min-height: 100vh;
     gap:12px;
-    background-color: #0B1E39;
+    background-color: #F5F7F8;
 }
 
-.sidebar {
-    grid-area: sidebar;
-    background-color: blue;
+/* ===== SIDEBAR BASE ===== */
+.sidebar{
+  grid-area: sidebar;
+  background: linear-gradient(180deg, #0D4F50, #0F766E);
+  color: #FFFFFF;
+  border-radius:16px;
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  display:grid;
+  grid-template-rows: auto auto auto 1fr auto; /* título, drop1, drop2, espacio, footer */
+  gap: 16px;
+  padding: 18px;
+  position: sticky; top: 12px;
 }
 
-.header {
-    grid-area: header;
-    background-color: #0B1E39;
-    color: white;
-    display:grid;
-    grid-template-columns: 70% 15% 15%;
+.sidebar h2{ margin:0 0 6px; font-weight: 800; }
+.sidebar h3{ margin:0; font-size: 1rem; font-weight: 700; }
+.spacer{ height:100%; }
+
+/* ===== DROPDOWN (dcc.Dropdown / react-select) ===== */
+/* Contenedor del control (versión nueva y legacy) */
+.control .Select__control,
+.control .Select-control{
+  background: #FFFFFF;         /* blanco (sin verde) */
+  color: #0E1726;              /* texto oscuro dentro */
+  border: 0;
+  box-shadow: none;
+  min-height: 44px;
+  border-radius: 12px;
 }
 
-.KPI {
-    grid-area: KPI;
-    display:grid;
-    background-color: #eee;
-    grid-template-areas: "KPI1 KPI2 KPI3";
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:var(--space-3);
+.about-me {
+  background: rgba(255, 255, 255, 0.08); /* fondo semitransparente */
+  padding: 12px 14px;
+  border-radius: 12px;
+  margin-top: 10px;
+  color: #E0F2F1;
+  display: inline-block;   /* 🔹 se ajusta al contenido */
+  max-width: 100%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* sutil sombra */
 }
 
-.KPI1 {
-    grid-area:KPI1;
-    background-color:orange;
+.about-me h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #FFFFFF;          /* más contraste */
+  display: flex;
+  align-items: center;
+  gap: 6px;                /* espacio si usas un emoji o ícono */
 }
 
-.KPI2 {
-    grid-area:KPI2;
-    background-color:red;
+.about-me p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #F1F5F9;          /* gris claro, legible */
 }
 
-.KPI3 {
-    grid-area:KPI3;
-    background-color:blue;
+/* Contenido y padding interno */
+.control .Select__value-container{ padding: 4px 10px; }
+
+/* Texto seleccionado (valor actual) */
+.control .Select__single-value{
+  color: #0E1726;              
+  opacity: 1;
+  font-weight: 600;
 }
 
-.Graficos1 {
-    grid-area: Graficos1;
-    background-color: orange;
-    display:grid;
+/* Texto al escribir */
+.control .Select__input input{
+  color: #0E1726 !important;
+  opacity: 1 !important;
+}
+
+/* Placeholder */
+.control .Select__placeholder,
+.control .Select-placeholder{
+  color: #6B7A90;
+  opacity: 1;
+}
+
+
+.control .Select__menu-portal{ z-index: 9999; }
+
+
+.control .Select__menu,
+.control .Select-menu-outer{
+  background: #FFFFFF;
+  color: #0E1726;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #E6EBEF;
+  z-index: 9999;               
+}
+
+
+.control .Select__option,
+.control .Select-option{
+  color: #0E1726;
+  background: #FFFFFF;
+  font-weight: 500;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+
+.control .Select__option--is-focused,
+.control .Select-option.is-focused{
+  background: #EAF3F1;
+}
+
+
+.control .Select__option--is-selected,
+.control .Select-option.is-selected{
+  background: #0F766E;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+
+.control .Select__control--is-focused,
+.control .is-focused:not(.is-open) > .Select-control{
+  box-shadow: 0 0 0 2px rgba(255,255,255,.35);
+  border-color: transparent;
+}
+
+
+.social{
+  display:flex; gap:10px; flex-wrap:wrap;
+  margin-top: 6px;
+}
+.social a{
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:999px;
+  background: rgba(255,255,255,.12);
+  color:#fff; text-decoration:none;
+}
+.social a:hover{ background: rgba(255,255,255,.2); }
+
+.header{
+  grid-area: header;
+  display: grid;
+  grid-template-columns: 1fr auto auto; 
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+
+
+  background: linear-gradient(180deg, #F5F7F8 0%, #F4F6F7 100%);
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.05);
+  color: #0E1726;
+}
+
+
+.header h1{
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: .2px;
+
+  font-size: clamp(20px, 3.2vw, 40px);
+}
+
+
+.etiquetaHeader{
+  justify-self: end;   
+}
+
+
+.etiquetaHeader h3{
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #E9EEF0;
+  color: #0E1726;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.6);
+  white-space: nowrap; 
+}
+
+@media (max-width: 768px){
+  .header{
+    grid-template-columns: 1fr; 
+    gap: 10px;
+    text-align: center;
+  }
+  .etiquetaHeader{ justify-self: center; }
+}
+
+.KPI{
+  grid-area: KPI;
+  display: grid;
+  grid-template-areas: "KPI1 KPI2 KPI3";
+  grid-template-columns: repeat(3, minmax(220px, 1fr)); 
+  gap: 12px;              
+  margin-top: 12px;       
+}
+
+
+.KPI1, .KPI2, .KPI3{
+  background: #FFFFFF;
+  color: #0E1726;
+  border: 1px solid #E6EBEF;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  padding: 12px 16px;      
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;     
+  min-height: 72px;       
+  gap: 2px;                
+}
+
+
+.KPI1{ grid-area: KPI1; }
+.KPI2{ grid-area: KPI2; }
+.KPI3{ grid-area: KPI3; }
+
+
+.kpi-label{
+  font-size: .80rem;
+  color: #6B7A90;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: 2px;
+  text-align: center;
+}
+
+
+.kpi-value{
+  margin: 0;
+  font-weight: 800;
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem); 
+  line-height: 1.0;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  text-align: center;
+}
+
+
+.kpi-value small{
+  display: block;
+  margin-top: 2px;
+  font-weight: 700;
+  font-size: .65em;
+  opacity: .85;
+  text-align: center;
+}
+
+
+.KPI1 .kpi-value{ color: #F59E0B; }  
+.KPI2 .kpi-value{ color: #22C55E; }   
+.KPI3 .kpi-value{ color: #0EA5E9; }   
+
+
+@media (max-width: 900px){
+  .KPI{
+    grid-template-columns: 1fr;
     grid-template-areas:
-              "Grafico-torta Grafico-barra";
-    grid-template-columns: 50% 50%;
+      "KPI1"
+      "KPI2"
+      "KPI3";
+  }
+}
+.Graficos1{
+  grid-area: Graficos1;
+  background: transparent;
+  display: grid;
+  grid-template-areas: "Grafico-torta Grafico-barra";
+  grid-template-columns: 50% 50%;
+  gap: 12px;                  
 }
 
-.Grafico-torta {
-    grid-area: Grafico-torta;
+.Grafico-torta, .Grafico-barra, .Tabla{
+  background: #FFFFFF;
+  border: 1px solid #E6EBEF;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  padding: 10px;             
 }
 
-.Grafico-barra {
-    grid-area: Grafico-barra;
-}
+.Grafico-torta{ grid-area: Grafico-torta; }
+.Grafico-barra{ grid-area: Grafico-barra; }
 
-.Tabla {
-    grid-area: Tabla;
-    background-color: black;
+
+.js-plotly-plot .gtitle{
+  font-size: 16px;
+  font-weight: 700;
 }
