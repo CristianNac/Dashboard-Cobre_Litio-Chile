@@ -15,6 +15,7 @@ pydantic-settings = "^2.10.1"
 dash = "^3.2.0"
 plotly = {extras = ["express"], version = "^6.3.0"}
 dash-ag-grid = "^32.3.1"
+gunicorn = "^23.0.0"
 
 [build-system]
 requires = ["poetry-core"]
