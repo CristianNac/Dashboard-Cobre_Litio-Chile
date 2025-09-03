@@ -1,0 +1,1 @@
+web: PYTHONPATH=src gunicorn -w 2 -k gthread -b 0.0.0.0:$PORT dashboard_mineria.app:server
